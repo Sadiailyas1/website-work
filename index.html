@@ -17,28 +17,34 @@
     --cream:#f3ede0;
     --sage:#8fb3a4;
     --line:rgba(243,237,224,0.14);
+    --header-bg:rgba(15,42,36,0.92);
     --radius:14px;
   }
   /* ---- رنگین تھیمز (Color Themes) ---- */
   html[data-theme="blue"]{
     --bg-deep:#0d1b2e; --bg-panel:#132840; --bg-panel-2:#1a3454;
     --gold:#c7cedd; --gold-soft:#e7ebf3; --cream:#eef1f7; --sage:#8fa3c2;
-    --line:rgba(238,241,247,0.14);
+    --line:rgba(238,241,247,0.14); --header-bg:rgba(13,27,46,0.92);
   }
   html[data-theme="maroon"]{
     --bg-deep:#2c1015; --bg-panel:#3a161c; --bg-panel-2:#4a1d24;
     --gold:#d4a24b; --gold-soft:#eac887; --cream:#f3e7e0; --sage:#c79488;
-    --line:rgba(243,231,224,0.14);
+    --line:rgba(243,231,224,0.14); --header-bg:rgba(44,16,21,0.92);
   }
   html[data-theme="teal"]{
     --bg-deep:#082826; --bg-panel:#0e3a37; --bg-panel-2:#134b47;
     --gold:#d9895e; --gold-soft:#f0b28c; --cream:#eef3f1; --sage:#7fb6ad;
-    --line:rgba(238,243,241,0.14);
+    --line:rgba(238,243,241,0.14); --header-bg:rgba(8,40,38,0.92);
   }
   html[data-theme="charcoal"]{
     --bg-deep:#18191c; --bg-panel:#212327; --bg-panel-2:#2b2e33;
     --gold:#5fc79a; --gold-soft:#8fe0bd; --cream:#eceeee; --sage:#8a9490;
-    --line:rgba(236,238,238,0.14);
+    --line:rgba(236,238,238,0.14); --header-bg:rgba(24,25,28,0.92);
+  }
+  html[data-theme="light"]{
+    --bg-deep:#f7faf8; --bg-panel:#ffffff; --bg-panel-2:#eaf3ee;
+    --gold:#2f7d55; --gold-soft:#1f6a45; --cream:#1c2b24; --sage:#5f7568;
+    --line:rgba(28,43,36,0.13); --header-bg:rgba(255,255,255,0.92);
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
@@ -65,7 +71,7 @@
 
   header{
     position:sticky; top:0; z-index:50;
-    background:rgba(15,42,36,0.92); backdrop-filter:blur(8px);
+    background:var(--header-bg); backdrop-filter:blur(8px);
     border-bottom:1px solid var(--line);
   }
   .nav-wrap{
@@ -142,6 +148,7 @@
   .feature-card p{font-size:12.5px; color:var(--sage); line-height:1.6;}
 
   .course-highlight{
+    display:block; text-decoration:none; color:inherit;
     background:linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel));
     border:1px solid var(--gold); border-radius:var(--radius); padding:34px; margin:40px 0 30px; text-align:center;
     cursor:pointer; transition:transform .2s;
@@ -155,48 +162,23 @@
     display:flex; align-items:center; justify-content:space-between; gap:16px;
     background:var(--bg-panel); border:1px solid var(--line); border-radius:12px;
     padding:18px 22px; cursor:pointer; transition:border-color .2s, transform .2s; text-align:right;
+    text-decoration:none; color:inherit;
   }
   .course-row:hover{border-color:var(--gold); transform:translateX(-3px);}
   .course-row .cname{color:var(--gold-soft); font-size:18px; text-decoration:underline; text-underline-offset:5px;}
   .course-row .cdur{color:var(--sage); font-size:14px; white-space:nowrap;}
   .course-row .arrow{color:var(--gold); font-size:18px;}
 
-  .audio-controls{ display:flex; gap:16px; flex-wrap:wrap; justify-content:center; margin:40px 0 30px; }
-  select, input[type=text]{
-    background:var(--bg-panel); color:var(--cream); border:1px solid var(--line); border-radius:10px;
-    padding:12px 18px; font-size:16px; font-family:inherit; min-width:220px;
+  .quran-teaser{
+    background:linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel));
+    border:1px solid var(--line); border-radius:var(--radius); padding:38px;
+    display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap; text-align:right;
   }
-  input[type=text]::placeholder{color:var(--sage);}
-  select:focus, input:focus-visible{outline:2px solid var(--gold); outline-offset:1px;}
-  .surah-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(300px,1fr)); gap:16px; }
-  .surah-card{
-    background:var(--bg-panel); border:1px solid var(--line); border-radius:12px; padding:18px 20px;
-    display:flex; flex-direction:column; gap:10px;
-  }
-  .surah-top{display:flex; align-items:center; justify-content:space-between; gap:10px;}
-  .surah-num{
-    width:34px; height:34px; flex:0 0 auto; border-radius:50%; border:1px solid var(--gold);
-    display:flex; align-items:center; justify-content:center; font-size:14px; color:var(--gold-soft); font-family:'Noto Naskh Arabic';
-  }
-  .surah-name-ar{font-size:20px; color:var(--gold-soft); text-align:center; flex:1;}
-  .surah-meta{font-size:12px; color:var(--sage); text-align:left;}
-  .surah-actions{display:flex; gap:10px;}
-  .icon-btn{
-    flex:1; display:flex; align-items:center; justify-content:center; gap:6px;
-    background:var(--bg-panel-2); border:1px solid var(--line); color:var(--cream);
-    border-radius:8px; padding:9px; font-size:14px; cursor:pointer; text-decoration:none; font-family:inherit;
-    transition:border-color .2s, color .2s;
-  }
-  .icon-btn:hover{border-color:var(--gold); color:var(--gold-soft);}
-  .badge-soon{
-    font-size:11px; color:var(--sage); border:1px dashed var(--line); border-radius:999px;
-    padding:3px 10px; text-align:center;
-  }
-  .audio-note{ text-align:center; color:var(--sage); font-size:13px; margin-top:30px; max-width:640px; margin-inline:auto; }
-  audio{width:100%; margin-top:4px; height:34px;}
+  .quran-teaser .qt-text h3{color:var(--gold-soft); font-size:22px; margin-bottom:10px;}
+  .quran-teaser .qt-text p{color:var(--sage); font-size:15px; max-width:480px;}
 
   .reg-wrap{display:grid; grid-template-columns:1.1fr 0.9fr; gap:30px; margin-top:40px;}
-  @media (max-width:840px){.reg-wrap{grid-template-columns:1fr;}}
+  @media (max-width:840px){.reg-wrap{grid-template-columns:1fr;} .quran-teaser{flex-direction:column; text-align:center;}}
   .steps{background:var(--bg-panel); border:1px solid var(--line); border-radius:var(--radius); padding:32px;}
   .steps ol{list-style:none; counter-reset:step; display:flex; flex-direction:column; gap:16px;}
   .steps li{counter-increment:step; display:flex; align-items:center; gap:14px; font-size:17px;}
@@ -215,35 +197,11 @@
   footer .contact-pill{justify-content:center; margin-bottom:18px;}
   footer .fine{opacity:.6; font-size:13px; margin-top:14px;}
 
-  #course-material-page{ display:none; }
-  .back-link{
-    display:inline-flex; align-items:center; gap:8px; color:var(--gold-soft); text-decoration:none;
-    font-size:15px; margin-bottom:26px; border:1px solid var(--line); padding:8px 18px; border-radius:999px;
-    cursor:pointer;
-  }
-  .back-link:hover{border-color:var(--gold);}
-  .cm-title{font-size:30px; color:var(--gold-soft); margin-bottom:8px;}
-  .cm-duration{color:var(--sage); font-size:15px; margin-bottom:34px;}
-  .cm-block{ background:var(--bg-panel); border:1px solid var(--line); border-radius:var(--radius); padding:30px; margin-bottom:26px; }
-  .cm-block h3{ color:var(--gold-soft); font-size:20px; margin-bottom:18px; }
-  .pdf-row{
-    display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
-    background:var(--bg-panel-2); border:1px solid var(--line); border-radius:10px; padding:16px 20px;
-  }
-  .pdf-row .pdf-label{display:flex; align-items:center; gap:12px; font-size:16px;}
-  .pdf-icon{ width:40px; height:40px; border-radius:8px; background:var(--gold); color:#16302b; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:700; }
-  .cm-audio-list{ display:flex; flex-direction:column; gap:14px; }
-  .cm-audio-item{ background:var(--bg-panel-2); border:1px solid var(--line); border-radius:10px; padding:16px 20px; }
-  .cm-audio-item .aname{ color:var(--gold-soft); font-size:16px; margin-bottom:8px; display:block; }
-  .empty-note{ color:var(--sage); font-size:14px; text-align:center; padding:14px; }
-
   ::selection{background:var(--gold); color:#16302b;}
   @media (prefers-reduced-motion: reduce){ *{transition:none !important;} }
 </style>
 </head>
 <body>
-
-<div id="main-page">
 
 <header>
   <div class="nav-wrap">
@@ -255,14 +213,15 @@
       <ul>
         <li><a href="#about">ہمارے بارے میں</a></li>
         <li><a href="#features">خصوصیات</a></li>
-        <li><a href="#courses">کورسز </a></li>
-        <li><a href="#audio">آڈیو لائبریری</a></li>
+        <li><a href="#courses">دورہ جات</a></li>
+        <li><a href="quran.html">آڈیو لائبریری</a></li>
         <li><a href="#register">رجسٹریشن</a></li>
       </ul>
     </nav>
     <div class="theme-switcher">
       <span class="ts-label">تھیم</span>
       <button class="theme-dot active" data-theme="default" style="background:linear-gradient(135deg,#0f2a24,#c9a24b);" onclick="setTheme('default')" title="سبز و سنہری" aria-label="سبز و سنہری تھیم"></button>
+      <button class="theme-dot" data-theme="light" style="background:linear-gradient(135deg,#ffffff,#2f7d55);" onclick="setTheme('light')" title="سفید و سبز" aria-label="سفید و سبز تھیم"></button>
       <button class="theme-dot" data-theme="blue" style="background:linear-gradient(135deg,#0d1b2e,#c7cedd);" onclick="setTheme('blue')" title="نیلا و چاندی" aria-label="نیلا و چاندی تھیم"></button>
       <button class="theme-dot" data-theme="maroon" style="background:linear-gradient(135deg,#2c1015,#d4a24b);" onclick="setTheme('maroon')" title="مرون و سنہری" aria-label="مرون و سنہری تھیم"></button>
       <button class="theme-dot" data-theme="teal" style="background:linear-gradient(135deg,#082826,#d9895e);" onclick="setTheme('teal')" title="فیروزی و تانبا" aria-label="فیروزی و تانبا تھیم"></button>
@@ -283,7 +242,7 @@
     <p>قرآنِ پاک کی نشر و اشاعت اور اسلامی عقائد و مسائل سے آگاہی کے لیے، مستند علماء کی نگرانی میں گھر بیٹھے آسان دین سیکھنے کا معتبر ذریعہ۔</p>
     <div class="btn-row">
       <a href="#register" class="btn btn-gold">ابھی رجسٹر کریں</a>
-      <a href="#audio" class="btn btn-outline">قرآن مجید سنیں</a>
+      <a href="quran.html" class="btn btn-outline">قرآن مجید سنیں</a>
     </div>
   </div>
 </section>
@@ -319,13 +278,13 @@
 <section id="courses">
   <div class="section-inner">
     <h2 class="section-title">دورہ جات (کورسز)</h2>
-    <p class="section-sub">کورس کے نام پر کلک کریں — نصاب کا مواد (PDF اور آڈیوز) کھل جائے گا</p>
+    <p class="section-sub">کورس کے نام پر کلک کریں — نصاب کا مواد (PDF اور آڈیوز) دوسرے صفحے پر کھل جائے گا</p>
 
-    <div class="course-highlight" onclick="showCourse('main')" tabindex="0" role="button">
+    <a class="course-highlight" href="courses.html?id=main">
       <h3>ترجمہ قرآن کورس</h3>
       <p>مختصر تفسیر قرآن (مختصر آسان مفہوم) — ہر حرف لفظ کا ترجمہ، بامحاورہ عام فہم ترجمہ، تجوید کے ساتھ کلمات کہلوانا۔<br>
       اس کے علاوہ بچوں کے لیے اسلامی کہانیاں — عمر کے مطابق دلچسپ اور آسان سبق آموز کہانیاں۔</p>
-    </div>
+    </a>
 
     <div class="divider"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.5 7.5H22l-6 4.5 2.5 7.5L12 17l-6.5 4.5L8 14 2 9.5h7.5z"/></svg></div>
 
@@ -334,21 +293,15 @@
   </div>
 </section>
 
-<section id="audio" style="background:var(--bg-panel);">
+<section id="quran-teaser-section" style="background:var(--bg-panel);">
   <div class="section-inner">
-    <h2 class="section-title">آڈیو لائبریری</h2>
-    <p class="section-sub">قرآن مجید کی تلاوت مفت سنیں اور ڈاؤن لوڈ کریں</p>
-
-    <div class="audio-controls">
-      <select id="reciter-select" aria-label="قاری منتخب کریں"></select>
-      <input type="text" id="surah-search" placeholder="سورہ کا نام یا نمبر لکھیں...">
+    <div class="quran-teaser">
+      <div class="qt-text">
+        <h3>آڈیو لائبریری — قرآن مجید کی تلاوت</h3>
+        <p>پسندیدہ قاری منتخب کریں اور کسی بھی سورہ کی تلاوت مفت سنیں یا ڈاؤن لوڈ کریں۔</p>
+      </div>
+      <a class="btn btn-gold" href="quran.html">لائبریری کھولیں</a>
     </div>
-
-    <div class="surah-grid" id="surah-grid"></div>
-
-    <p class="audio-note">
-      تلاوت آڈیو کے لنکس اکیڈمی کی جانب سے شامل کیے جائیں گے۔ جس سورہ کا لنک ابھی شامل نہیں اُس پر "جلد شامل ہوگا" ظاہر ہوگا۔
-    </p>
   </div>
 </section>
 
@@ -387,247 +340,31 @@
   <div class="fine">© 2026 الاحسان آن لائن اکیڈمی — جملہ حقوق محفوظ ہیں</div>
 </footer>
 
-</div>
-
-
-<div id="course-material-page">
-  <div class="section-inner" style="padding:50px 24px; max-width:900px; margin:0 auto;">
-    <span class="back-link" onclick="backToMain()">→ واپس تمام کورسز پر جائیں</span>
-    <h2 class="cm-title" id="cm-title"></h2>
-    <div class="cm-duration" id="cm-duration"></div>
-
-    <div class="cm-block">
-      <h3>کورس کی PDF فائل</h3>
-      <div id="cm-pdf-holder"></div>
-    </div>
-
-    <div class="cm-block">
-      <h3>کورس کی آڈیوز</h3>
-      <div class="cm-audio-list" id="cm-audio-holder"></div>
-    </div>
-  </div>
-</div>
-
-
 <script>
 /* =========================================================================
-   EDITABLE CONFIG — اکیڈمی یہاں اپنے لنکس شامل کریں
+   یہاں صرف کورسز کے نام اور دورانیہ درج ہیں (فہرست دکھانے کے لیے)۔
+   PDF اور آڈیو لنکس شامل/تبدیل کرنے کے لیے "courses.html" فائل کھولیں۔
    ========================================================================= */
-
-// ---- 1) قرآن مجید تلاوت آڈیوز (آڈیو لائبریری سیکشن) ----
-// ہر قاری کے لیے 114 لنکس شامل کریں (سورہ 1 سے 114 تک ترتیب سے)۔
-// جس سورہ کا لنک نہ ہو اُسے خالی "" چھوڑ دیں — سائٹ خود بخود "جلد شامل ہوگا" دکھائے گی۔
-const RECITER_AUDIO_LINKS = {
-  "مشاری راشد العفاسی": [
-    // یہاں 114 لنکس ترتیب سے لکھیں، مثال: "https://example.com/audio/alafasy/001.mp3",
-  ],
-  "عبد الباسط عبد الصمد": [
-    // "https://example.com/audio/abdulbasit/001.mp3",
-  ],
-  "عبد الرحمٰن السدیس": [
-    // "https://example.com/audio/sudais/001.mp3",
-  ],
-};
-
-// ---- 2) کورسز کا مواد (PDF + آڈیوز) ----
-// ہر کورس کے لیے pdfUrl اور audios کی فہرست یہاں شامل کریں۔
-const COURSES = {
-  main: {
-    title: "ترجمہ قرآن کورس",
-    duration: "سال بھر جاری، سلسلہ وار کورس",
-    pdfUrl: "",
-    pdfLabel: "ترجمہ قرآن کورس — نصاب",
-    audios: [
-      // { title: "سبق 1", url: "https://example.com/materials/tarjuma/lesson1.mp3" },
-    ]
-  },
-  short1: {
-    title: "اسلامی عقائد کورس (حصہ اول)",
-    duration: "15 روزہ، صرف 15 منٹ روزانہ",
-    pdfUrl: "",
-    pdfLabel: "اسلامی عقائد کورس — حصہ اول",
-    audios: []
-  },
-  short2: {
-    title: "اسلامی عقائد کورس (حصہ دوم)",
-    duration: "10 روزہ، صرف 15 منٹ روزانہ",
-    pdfUrl: "",
-    pdfLabel: "اسلامی عقائد کورس — حصہ دوم",
-    audios: []
-  },
-  short3: {
-    title: "علمی عملی تجوید کورس",
-    duration: "20 روزہ، صرف 15 منٹ روزانہ",
-    pdfUrl: "",
-    pdfLabel: "علمی عملی تجوید کورس",
-    audios: []
-  },
-  short4: {
-    title: "نصاب خلیفہ کورس",
-    duration: "دو ماہ، صرف 10 منٹ روزانہ",
-    pdfUrl: "",
-    pdfLabel: "نصاب خلیفہ کورس",
-    audios: []
-  },
-  short5: {
-    title: "رمضان المبارک کورس (ایک آیت، ایک حدیث، ایک فقہی مسئلہ)",
-    duration: "ایک ماہ، صرف 10 منٹ روزانہ",
-    pdfUrl: "",
-    pdfLabel: "رمضان المبارک کورس",
-    audios: []
-  },
-  short6: {
-    title: "عشرہ ذوالحج قربانی کورس",
-    duration: "15 روزہ، صرف 15 منٹ روزانہ",
-    pdfUrl: "",
-    pdfLabel: "عشرہ ذوالحج قربانی کورس",
-    audios: []
-  },
-  short7: {
-    title: "عشرہ المظفر کورس",
-    duration: "3 روزہ، صرف 15 منٹ روزانہ",
-    pdfUrl: "",
-    pdfLabel: "عشرہ المظفر کورس",
-    audios: []
-  }
-};
-/* ========================= END EDITABLE CONFIG ========================= */
-
-
-const surahs = [
-["الفاتحہ",7,"مکی"],["البقرہ",286,"مدنی"],["آل عمران",200,"مدنی"],["النساء",176,"مدنی"],
-["المائدہ",120,"مدنی"],["الأنعام",165,"مکی"],["الأعراف",206,"مکی"],["الأنفال",75,"مدنی"],
-["التوبہ",129,"مدنی"],["یونس",109,"مکی"],["ھود",123,"مکی"],["یوسف",111,"مکی"],
-["الرعد",43,"مدنی"],["ابراہیم",52,"مکی"],["الحجر",99,"مکی"],["النحل",128,"مکی"],
-["الإسراء",111,"مکی"],["الکھف",110,"مکی"],["مریم",98,"مکی"],["طہٰ",135,"مکی"],
-["الأنبیاء",112,"مکی"],["الحج",78,"مدنی"],["المؤمنون",118,"مکی"],["النور",64,"مدنی"],
-["الفرقان",77,"مکی"],["الشعراء",227,"مکی"],["النمل",93,"مکی"],["القصص",88,"مکی"],
-["العنکبوت",69,"مکی"],["الروم",60,"مکی"],["لقمان",34,"مکی"],["السجدہ",30,"مکی"],
-["الأحزاب",73,"مدنی"],["سبإ",54,"مکی"],["فاطر",45,"مکی"],["یس",83,"مکی"],
-["الصافات",182,"مکی"],["ص",88,"مکی"],["الزمر",75,"مکی"],["غافر",85,"مکی"],
-["فصلت",54,"مکی"],["الشوریٰ",53,"مکی"],["الزخرف",89,"مکی"],["الدخان",59,"مکی"],
-["الجاثیہ",37,"مکی"],["الأحقاف",35,"مکی"],["محمد",38,"مدنی"],["الفتح",29,"مدنی"],
-["الحجرات",18,"مدنی"],["ق",45,"مکی"],["الذاریات",60,"مکی"],["الطور",49,"مکی"],
-["النجم",62,"مکی"],["القمر",55,"مکی"],["الرحمٰن",78,"مدنی"],["الواقعہ",96,"مکی"],
-["الحدید",29,"مدنی"],["المجادلہ",22,"مدنی"],["الحشر",24,"مدنی"],["الممتحنہ",13,"مدنی"],
-["الصف",14,"مدنی"],["الجمعہ",11,"مدنی"],["المنافقون",11,"مدنی"],["التغابن",18,"مدنی"],
-["الطلاق",12,"مدنی"],["التحریم",12,"مدنی"],["الملک",30,"مکی"],["القلم",52,"مکی"],
-["الحاقہ",52,"مکی"],["المعارج",44,"مکی"],["نوح",28,"مکی"],["الجن",28,"مکی"],
-["المزمل",20,"مکی"],["المدثر",56,"مکی"],["القیامہ",40,"مکی"],["الانسان",31,"مدنی"],
-["المرسلات",50,"مکی"],["النبإ",40,"مکی"],["النازعات",46,"مکی"],["عبس",42,"مکی"],
-["التکویر",29,"مکی"],["الإنفطار",19,"مکی"],["المطففین",36,"مکی"],["الإنشقاق",25,"مکی"],
-["البروج",22,"مکی"],["الطارق",17,"مکی"],["الأعلیٰ",19,"مکی"],["الغاشیہ",26,"مکی"],
-["الفجر",30,"مکی"],["البلد",20,"مکی"],["الشمس",15,"مکی"],["اللیل",21,"مکی"],
-["الضحیٰ",11,"مکی"],["الشرح",8,"مکی"],["التین",8,"مکی"],["العلق",19,"مکی"],
-["القدر",5,"مکی"],["البینہ",8,"مدنی"],["الزلزلہ",8,"مدنی"],["العادیات",11,"مکی"],
-["القارعہ",11,"مکی"],["التکاثر",8,"مکی"],["العصر",3,"مکی"],["الھمزہ",9,"مکی"],
-["الفیل",5,"مکی"],["قریش",4,"مکی"],["الماعون",7,"مکی"],["الکوثر",3,"مکی"],
-["الکافرون",6,"مکی"],["النصر",3,"مدنی"],["المسد",5,"مکی"],["الإخلاص",4,"مکی"],
-["الفلق",5,"مکی"],["الناس",6,"مکی"]
+const COURSE_LIST = [
+  { id:'short1', title:'اسلامی عقائد کورس (حصہ اول)', duration:'15 روزہ، صرف 15 منٹ روزانہ' },
+  { id:'short2', title:'اسلامی عقائد کورس (حصہ دوم)', duration:'10 روزہ، صرف 15 منٹ روزانہ' },
+  { id:'short3', title:'علمی عملی تجوید کورس', duration:'20 روزہ، صرف 15 منٹ روزانہ' },
+  { id:'short4', title:'نصاب خلیفہ کورس', duration:'دو ماہ، صرف 10 منٹ روزانہ' },
+  { id:'short5', title:'رمضان المبارک کورس (ایک آیت، ایک حدیث، ایک فقہی مسئلہ)', duration:'ایک ماہ، صرف 10 منٹ روزانہ' },
+  { id:'short6', title:'عشرہ ذوالحج قربانی کورس', duration:'15 روزہ، صرف 15 منٹ روزانہ' },
+  { id:'short7', title:'عشرہ المظفر کورس', duration:'3 روزہ، صرف 15 منٹ روزانہ' }
 ];
 
-const grid = document.getElementById('surah-grid');
-const reciterSelect = document.getElementById('reciter-select');
-const searchBox = document.getElementById('surah-search');
-
-Object.keys(RECITER_AUDIO_LINKS).forEach(name => {
-  const opt = document.createElement('option');
-  opt.value = name; opt.textContent = name;
-  reciterSelect.appendChild(opt);
-});
-
-function renderSurahs(filterText=''){
-  grid.innerHTML = '';
-  const links = RECITER_AUDIO_LINKS[reciterSelect.value] || [];
-  surahs.forEach((s, idx) => {
-    const num = idx + 1;
-    const [name, ayat, place] = s;
-    if(filterText && !name.includes(filterText) && String(num) !== filterText) return;
-
-    const url = links[idx] || '';
-    const card = document.createElement('div');
-    card.className = 'surah-card';
-    card.innerHTML = `
-      <div class="surah-top">
-        <span class="surah-num">${num}</span>
-        <span class="surah-name-ar">${name}</span>
-        <span class="surah-meta">${ayat} آیات<br>${place}</span>
-      </div>
-      ${url ? `<audio controls preload="none" src="${url}"></audio>
-        <div class="surah-actions"><a class="icon-btn" href="${url}" download>⬇ ڈاؤن لوڈ</a></div>`
-        : `<div class="badge-soon">جلد شامل ہوگا</div>`}
-    `;
-    grid.appendChild(card);
-  });
-}
-reciterSelect.addEventListener('change', () => renderSurahs(searchBox.value.trim()));
-searchBox.addEventListener('input', () => renderSurahs(searchBox.value.trim()));
-if(Object.keys(RECITER_AUDIO_LINKS).length) renderSurahs();
-else grid.innerHTML = '<p class="empty-note">قاری اور آڈیو لنکس شامل ہونے کے بعد یہاں فہرست ظاہر ہوگی۔</p>';
-
 const courseList = document.getElementById('course-list');
-const shortCourseIds = ['short1','short2','short3','short4','short5','short6','short7'];
-shortCourseIds.forEach(id => {
-  const c = COURSES[id];
-  const row = document.createElement('div');
+COURSE_LIST.forEach(c => {
+  const row = document.createElement('a');
   row.className = 'course-row';
-  row.setAttribute('tabindex','0');
-  row.setAttribute('role','button');
-  row.onclick = () => showCourse(id);
+  row.href = `courses.html?id=${encodeURIComponent(c.id)}`;
   row.innerHTML = `<span class="cname">${c.title}</span><span class="cdur">${c.duration}</span><span class="arrow">←</span>`;
   courseList.appendChild(row);
 });
 
-function showCourse(id){
-  const c = COURSES[id];
-  if(!c) return;
-  document.getElementById('cm-title').textContent = c.title;
-  document.getElementById('cm-duration').textContent = c.duration;
-
-  const pdfHolder = document.getElementById('cm-pdf-holder');
-  if(c.pdfUrl){
-    pdfHolder.innerHTML = `
-      <div class="pdf-row">
-        <span class="pdf-label"><span class="pdf-icon">PDF</span> ${c.pdfLabel || 'کورس نصاب'}</span>
-        <div style="display:flex; gap:10px;">
-          <a class="icon-btn" href="${c.pdfUrl}" target="_blank" rel="noopener">👁 دیکھیں</a>
-          <a class="icon-btn" href="${c.pdfUrl}" download>⬇ ڈاؤن لوڈ</a>
-        </div>
-      </div>`;
-  } else {
-    pdfHolder.innerHTML = `<p class="empty-note">اس کورس کی PDF جلد شامل کی جائے گی۔</p>`;
-  }
-
-  const audioHolder = document.getElementById('cm-audio-holder');
-  if(c.audios && c.audios.length){
-    audioHolder.innerHTML = '';
-    c.audios.forEach(a => {
-      const item = document.createElement('div');
-      item.className = 'cm-audio-item';
-      item.innerHTML = `
-        <span class="aname">${a.title}</span>
-        <audio controls preload="none" src="${a.url}"></audio>
-        <div class="surah-actions" style="margin-top:8px;">
-          <a class="icon-btn" href="${a.url}" download>⬇ ڈاؤن لوڈ</a>
-        </div>`;
-      audioHolder.appendChild(item);
-    });
-  } else {
-    audioHolder.innerHTML = `<p class="empty-note">اس کورس کی آڈیوز جلد شامل کی جائیں گی۔</p>`;
-  }
-
-  document.getElementById('main-page').style.display = 'none';
-  document.getElementById('course-material-page').style.display = 'block';
-  window.scrollTo(0,0);
-}
-
-function backToMain(){
-  document.getElementById('course-material-page').style.display = 'none';
-  document.getElementById('main-page').style.display = 'block';
-  window.scrollTo(0,0);
-}
-
-// ---- Color theme switcher ----
+// ---- Color theme switcher (shared key 'ehsani-theme' across all pages) ----
 function setTheme(name){
   if(name === 'default'){
     document.documentElement.removeAttribute('data-theme');
