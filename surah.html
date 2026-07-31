@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>آڈیو لائبریری — الاحسان آن لائن اکیڈمی</title>
+<title>سورہ کی آڈیوز — الاحسان آن لائن اکیڈمی</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -57,34 +57,37 @@
   .theme-dot:hover{ transform:scale(1.12); }
   .theme-dot.active{ border-color:var(--cream); }
 
-  .page-wrap{ max-width:1180px; margin:0 auto; padding:50px 24px 90px; }
+  .page-wrap{ max-width:900px; margin:0 auto; padding:50px 24px 90px; }
   .back-link{
     display:inline-flex; align-items:center; gap:8px; color:var(--gold-soft); text-decoration:none;
     font-size:15px; margin-bottom:26px; border:1px solid var(--line); padding:8px 18px; border-radius:999px; cursor:pointer;
   }
   .back-link:hover{border-color:var(--gold);}
-  .section-title{text-align:center; font-size:32px; color:var(--gold-soft); margin-bottom:6px;}
-  .section-sub{text-align:center; color:var(--sage); font-size:16px; max-width:640px; margin:0 auto;}
 
-  .audio-controls{ display:flex; gap:16px; flex-wrap:wrap; justify-content:center; margin:40px 0 30px; }
-  select, input[type=text]{
-    background:var(--bg-panel); color:var(--cream); border:1px solid var(--line); border-radius:10px;
-    padding:12px 18px; font-size:16px; font-family:inherit; min-width:220px;
+  .surah-header{ text-align:center; margin-bottom:34px; }
+  .surah-header .snum{
+    display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px;
+    border:1px solid var(--gold); border-radius:50%; color:var(--gold-soft); font-size:16px; margin-bottom:12px;
   }
-  input[type=text]::placeholder{color:var(--sage);}
-  select:focus, input:focus-visible{outline:2px solid var(--gold); outline-offset:1px;}
-  .surah-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(220px,1fr)); gap:16px; }
-  .surah-card{
-    background:var(--bg-panel); border:1px solid var(--line); border-radius:12px; padding:18px 20px;
-    display:flex; align-items:center; justify-content:space-between; gap:12px;
-    text-decoration:none; color:inherit; cursor:pointer; transition:border-color .2s, transform .2s;
+  .surah-header h2{ font-size:32px; color:var(--gold-soft); margin-bottom:6px; }
+  .surah-header .smeta{ color:var(--sage); font-size:15px; }
+
+  .tabs{ display:flex; gap:10px; justify-content:center; margin-bottom:26px; flex-wrap:wrap; }
+  .tab-btn{
+    background:var(--bg-panel); border:1px solid var(--line); color:var(--cream);
+    padding:11px 26px; border-radius:999px; font-size:16px; cursor:pointer; font-family:inherit;
+    transition:border-color .2s, color .2s, background .2s;
   }
-  .surah-card:hover{ border-color:var(--gold); transform:translateY(-2px); }
-  .surah-num{ width:34px; height:34px; flex:0 0 auto; border-radius:50%; border:1px solid var(--gold); display:flex; align-items:center; justify-content:center; font-size:14px; color:var(--gold-soft); font-family:'Noto Naskh Arabic'; }
-  .surah-name-ar{font-size:19px; color:var(--gold-soft); flex:1; text-align:center;}
-  .surah-arrow{ color:var(--gold); font-size:16px; }
-  .audio-note{ text-align:center; color:var(--sage); font-size:13px; margin-top:30px; max-width:640px; margin-inline:auto; }
-  .empty-note{ color:var(--sage); font-size:14px; text-align:center; padding:14px; }
+  .tab-btn.active{ border-color:var(--gold); color:var(--gold-soft); background:var(--bg-panel-2); }
+
+  .audio-list{ display:flex; flex-direction:column; gap:14px; }
+  .audio-item{ background:var(--bg-panel); border:1px solid var(--line); border-radius:12px; padding:18px 22px; }
+  .audio-item .aname{ color:var(--gold-soft); font-size:17px; margin-bottom:8px; display:block; }
+  .audio-actions{ display:flex; gap:10px; margin-top:8px; }
+  .icon-btn{ display:flex; align-items:center; justify-content:center; gap:6px; background:var(--bg-panel-2); border:1px solid var(--line); color:var(--cream); border-radius:8px; padding:9px 14px; font-size:14px; cursor:pointer; text-decoration:none; font-family:inherit; transition:border-color .2s, color .2s; }
+  .icon-btn:hover{border-color:var(--gold); color:var(--gold-soft);}
+  audio{width:100%; margin-top:4px; height:34px;}
+  .empty-note{ color:var(--sage); font-size:15px; text-align:center; padding:30px 14px; border:1px dashed var(--line); border-radius:12px; }
   ::selection{background:var(--gold); color:#16302b;}
   @media (prefers-reduced-motion: reduce){ *{transition:none !important;} }
 </style>
@@ -101,6 +104,7 @@
       <ul>
         <li><a href="index.html#about">ہمارے بارے میں</a></li>
         <li><a href="index.html#courses">دورہ جات</a></li>
+        <li><a href="quran.html">آڈیو لائبریری</a></li>
         <li><a href="index.html#register">رجسٹریشن</a></li>
       </ul>
     </nav>
@@ -117,23 +121,47 @@
 </header>
 
 <div class="page-wrap">
-  <a class="back-link" href="index.html">→ واپس مرکزی صفحہ پر جائیں</a>
+  <a class="back-link" href="quran.html">→ واپس تمام سورتوں پر جائیں</a>
 
-  <h2 class="section-title">آڈیو لائبریری</h2>
-  <p class="section-sub">قرآن مجید کی تلاوت مفت سنیں اور ڈاؤن لوڈ کریں</p>
-
-  <div class="audio-controls">
-    <input type="text" id="surah-search" placeholder="سورہ کا نام یا نمبر لکھیں...">
+  <div class="surah-header">
+    <div class="snum" id="s-num">1</div>
+    <h2 id="s-name">سورہ نہیں ملی</h2>
+    <div class="smeta" id="s-meta"></div>
   </div>
 
-  <div class="surah-grid" id="surah-grid"></div>
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="rukuu" onclick="switchTab('rukuu')">رکوع وار</button>
+    <button class="tab-btn" data-tab="ayat" onclick="switchTab('ayat')">آیت وار</button>
+  </div>
 
-  <p class="audio-note">
-    ہر سورہ پر کلک کریں — رکوع وار اور آیت وار آڈیوز اُس سورہ کے الگ صفحے پر کھلیں گی۔
-  </p>
+  <div class="audio-list" id="audio-list"></div>
 </div>
 
 <script>
+/* =========================================================================
+   EDITABLE CONFIG — یہاں ہر سورہ کے لیے آڈیوز شامل کریں۔
+   نمبر 1 سے 114 تک سورہ کا نمبر ہے (فہرست ترتیب کے مطابق)۔
+   ہر سورہ کے اندر دو حصے ہیں: rukuu (رکوع وار) اور ayat (آیت وار)۔
+   ہر آڈیو کے لیے title خود لکھیں (جیسے "رکوع 1 — آیت 1 تا 7" یا "آیت 1")۔
+   جس سورہ کا ڈیٹا شامل نہ کریں وہ خودکار طور پر خالی دکھائی جائے گی —
+   اس لیے صرف اُن سورتوں کا اندراج کریں جن کی آڈیو تیار ہو۔
+   ========================================================================= */
+const SURAH_AUDIO = {
+  1: { // الفاتحہ
+    rukuu: [
+      // { title: "رکوع 1 — مکمل سورہ", url: "https://drive.google.com/uc?export=download&id=FILE_ID" },
+    ],
+    ayat: [
+      // { title: "آیت 1", url: "https://drive.google.com/uc?export=download&id=FILE_ID" },
+      // { title: "آیت 2", url: "https://drive.google.com/uc?export=download&id=FILE_ID" },
+    ]
+  },
+  // 2: { rukuu: [ ... ], ayat: [ ... ] },   // البقرہ
+  // 3: { rukuu: [ ... ], ayat: [ ... ] },   // آل عمران
+  // ... اسی طرح جس سورہ کی آڈیو تیار ہو اُس کا اندراج یہاں شامل کریں (نمبر 1 تا 114)
+};
+/* ========================= END EDITABLE CONFIG ========================= */
+
 const surahs = [
 ["الفاتحہ",7,"مکی"],["البقرہ",286,"مدنی"],["آل عمران",200,"مدنی"],["النساء",176,"مدنی"],
 ["المائدہ",120,"مدنی"],["الأنعام",165,"مکی"],["الأعراف",206,"مکی"],["الأنفال",75,"مدنی"],
@@ -166,29 +194,48 @@ const surahs = [
 ["الفلق",5,"مکی"],["الناس",6,"مکی"]
 ];
 
-const grid = document.getElementById('surah-grid');
-const searchBox = document.getElementById('surah-search');
+const params = new URLSearchParams(window.location.search);
+const id = parseInt(params.get('id'), 10);
+let currentTab = 'rukuu';
 
-function renderSurahs(filterText=''){
-  grid.innerHTML = '';
-  surahs.forEach((s, idx) => {
-    const num = idx + 1;
-    const [name] = s;
-    if(filterText && !name.includes(filterText) && String(num) !== filterText) return;
+if(id >= 1 && id <= 114){
+  const [name, ayat, place] = surahs[id - 1];
+  document.getElementById('s-num').textContent = id;
+  document.getElementById('s-name').textContent = 'سورہ ' + name;
+  document.getElementById('s-meta').textContent = ayat + ' آیات — ' + place;
+  document.title = 'سورہ ' + name + ' — الاحسان آن لائن اکیڈمی';
+  renderList();
+} else {
+  document.getElementById('s-name').textContent = 'سورہ نہیں ملی';
+  document.querySelector('.tabs').style.display = 'none';
+  document.getElementById('audio-list').innerHTML = '<p class="empty-note">براہِ کرم آڈیو لائبریری میں سے کوئی سورہ منتخب کریں۔</p>';
+}
 
-    const card = document.createElement('a');
-    card.className = 'surah-card';
-    card.href = `surah.html?id=${num}`;
-    card.innerHTML = `
-      <span class="surah-num">${num}</span>
-      <span class="surah-name-ar">${name}</span>
-      <span class="surah-arrow">←</span>
-    `;
-    grid.appendChild(card);
+function switchTab(tab){
+  currentTab = tab;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+  renderList();
+}
+
+function renderList(){
+  const holder = document.getElementById('audio-list');
+  const data = SURAH_AUDIO[id] || { rukuu: [], ayat: [] };
+  const items = data[currentTab] || [];
+  if(!items.length){
+    holder.innerHTML = '<p class="empty-note">اس حصے کی آڈیوز جلد شامل کی جائیں گی۔</p>';
+    return;
+  }
+  holder.innerHTML = '';
+  items.forEach(a => {
+    const item = document.createElement('div');
+    item.className = 'audio-item';
+    item.innerHTML = `
+      <span class="aname">${a.title}</span>
+      <audio controls preload="none" src="${a.url}"></audio>
+      <div class="audio-actions"><a class="icon-btn" href="${a.url}" download>⬇ ڈاؤن لوڈ</a></div>`;
+    holder.appendChild(item);
   });
 }
-searchBox.addEventListener('input', () => renderSurahs(searchBox.value.trim()));
-renderSurahs();
 
 // ---- Color theme switcher (shared key 'ehsani-theme' across all pages) ----
 function setTheme(name){
